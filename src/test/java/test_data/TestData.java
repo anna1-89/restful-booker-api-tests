@@ -8,6 +8,7 @@ import net.datafaker.Faker;
 public class TestData {
     Faker faker = new Faker();
 
+    public static final String AUTH_BAD_CREDENTIALS = "Bad credentials";
     public static final Integer NON_EXISTING_BOOKING_ID = 2548756;
     public static final String SERVER_ERROR = "Internal Server Error";
     public static final String BAD_REQUEST_ERROR = "Bad Request";
@@ -17,11 +18,8 @@ public class TestData {
     public static final String METHOD_NOT_ALLOWED_ERROR = "Method Not Allowed";
 
     //AUTH
-    public static final String AUTH_USERNAME = "admin";
-    public static final String AUTH_PASSWORD = "password123";
-    public static final String AUTH_BAD_CREDENTIALS = "Bad credentials";
-
-
+    public static final String AUTH_USERNAME = System.getProperty("adminUsername");
+    public static final String AUTH_PASSWORD = System.getProperty("adminPassword");
 
     public BookingBodyModel bookingBodyModel() {
         return new BookingBodyModel(
