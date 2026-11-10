@@ -14,7 +14,6 @@
 - Allure-отчет
 - Интеграция с Allure TestOps
 
----
 
 ## :rocket: Технологии и инструменты
 
@@ -29,7 +28,6 @@
 <a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>
 </p>
 
----
 
 ## :rocket:  Список методов
 
