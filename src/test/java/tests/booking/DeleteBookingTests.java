@@ -3,7 +3,6 @@ package tests.booking;
 import io.qameta.allure.Story;
 import models.auth.AuthBodyModel;
 import models.booking.BookingBodyModel;
-import models.booking.SuccessfulGetUpdateBookingResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
