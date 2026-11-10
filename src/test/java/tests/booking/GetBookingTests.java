@@ -19,7 +19,7 @@ public class GetBookingTests extends TestBase {
     @DisplayName("[API] Получение информации о существующем бронировании")
     public void getBookingTest() {
         BookingBodyModel bookingBody = testData.bookingBodyModel();
-        Integer bookingId = api.booking.createBookingAndGetBookindId(bookingBody);
+        Integer bookingId = api.booking.createBookingAndGetBookingId(bookingBody);
 
         SuccessfulGetUpdateBookingResponseModel bookingResponse = api.booking.getBooking(bookingId);
 

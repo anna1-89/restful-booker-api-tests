@@ -63,7 +63,7 @@ clean test
 ---
 
 ###  :rocket:  JENKINS:
-Открыть <a target="_blank" href="https://jenkins.qa.guru/job/42_annap_restful_booker_api_tests///">проект в Jenkins</a> и нажать **Собрать сейчас**
+Открыть <a target="_blank" href="https://jenkins.qa.guru/job/42_annap_restful_booker_api_tests/">проект в Jenkins</a> и нажать **Собрать сейчас**
 
 ![This is an image](images/screens/jenkins.png)
 
@@ -98,6 +98,8 @@ Allure Report — это популярный инструмент с откры
 ---
 
 ## :rocket: Интеграция с Allure TestOps
+
+Открыть <a target="_blank" href="https://allure.qa.guru/project/5430/dashboards/5715/">проект в Allure TestOps</a>
 
 TestOps Тестирование + Операции) — это методология и практика управления, автоматизации и масштабирования процессов тестирования в разработке ПО по аналогии с тем, как DevOps объединяет разработку и эксплуатацию.
 

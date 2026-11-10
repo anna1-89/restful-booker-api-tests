@@ -21,7 +21,7 @@ public class BookingApiClient {
                 .when()
                 .post("/booking")
                 .then()
-                .spec(successfulBookingResponseSpec)
+                .spec(successfulBookingResponseSpec("schemas/booking/successful_booking_response_schema.json"))
                 .extract()
                 .as(SuccessfulBookingResponseModel.class);
     }
@@ -33,7 +33,7 @@ public class BookingApiClient {
                 .when()
                 .post("/booking")
                 .then()
-                .spec(successfulBookingWithRequiredFieldsResponseSpec)
+                .spec(successfulBookingResponseSpec("schemas/booking/required_fields_successful_booking_response_schema.json"))
                 .extract()
                 .as(SuccessfulBookingResponseModel.class);
     }
@@ -45,19 +45,19 @@ public class BookingApiClient {
                 .when()
                 .post("/booking")
                 .then()
-                .spec(bookingInternalServerErrorResponseSpec)
+                .spec(responseSpec(500))
                 .extract()
                 .asString();
     }
 
     @Step("[API] Отправка запроса на создание POST /booking с получение id созданного бронирования")
-    public Integer createBookingAndGetBookindId(BookingBodyModel bookingBody) {
+    public Integer createBookingAndGetBookingId(BookingBodyModel bookingBody) {
         return given(baseRequestSpec)
                 .body(bookingBody)
                 .when()
                 .post("/booking")
                 .then()
-                .spec(successfulBookingResponseSpec)
+                .spec(successfulBookingResponseSpec("schemas/booking/successful_booking_response_schema.json"))
                 .extract()
                 .path("bookingid");
     }
@@ -83,7 +83,7 @@ public class BookingApiClient {
                 .when()
                 .get("/booking/{id}/")
                 .then()
-                .spec(bookingNotFoundResponseSpec)
+                .spec(responseSpec(404))
                 .extract()
                 .asString();
     }
@@ -111,7 +111,7 @@ public class BookingApiClient {
                 .when()
                 .put("/booking/{id}/")
                 .then()
-                .spec(bookingForbiddenResponseSpec)
+                .spec(responseSpec(403))
                 .extract()
                 .asString();
     }
@@ -125,7 +125,7 @@ public class BookingApiClient {
                 .when()
                 .put("/booking/{id}/")
                 .then()
-                .spec(bookingBadRequestResponseSpec)
+                .spec(responseSpec(400))
                 .extract()
                 .asString();
     }
@@ -154,7 +154,7 @@ public class BookingApiClient {
                 .when()
                 .delete("/booking/{id}/")
                 .then()
-                .spec(deleteBookingResponseSpec);
+                .spec(responseSpec(201));
     }
 
     @Step("Отправка запроса на удаление существующего бронирования DELETE /booking/{id} неавторизованным пользователем")
@@ -164,7 +164,7 @@ public class BookingApiClient {
                 .when()
                 .delete("/booking/{id}/")
                 .then()
-                .spec(bookingForbiddenResponseSpec)
+                .spec(responseSpec(403))
                 .extract()
                 .asString();
     }
@@ -177,7 +177,7 @@ public class BookingApiClient {
                 .when()
                 .delete("/booking/{id}/")
                 .then()
-                .spec(deleteBookingNotAllowedResponseSpec)
+                .spec(responseSpec(405))
                 .extract()
                 .asString();
     }

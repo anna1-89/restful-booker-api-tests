@@ -18,6 +18,7 @@ public class TestData {
     public static final String METHOD_NOT_ALLOWED_ERROR = "Method Not Allowed";
 
     //AUTH
+
     public static final String AUTH_USERNAME = System.getProperty("adminUsername");
     public static final String AUTH_PASSWORD = System.getProperty("adminPassword");
 

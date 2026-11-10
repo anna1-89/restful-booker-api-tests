@@ -19,7 +19,7 @@ public class DeleteBookingTests extends TestBase {
     @DisplayName("[API] Удаление существующего бронирования бронировании")
     public void deleteBookingTest() {
         BookingBodyModel bookingBody = testData.bookingBodyModel();
-        Integer bookingId = api.booking.createBookingAndGetBookindId(bookingBody);
+        Integer bookingId = api.booking.createBookingAndGetBookingId(bookingBody);
 
         AuthBodyModel authData = new AuthBodyModel(AUTH_USERNAME, AUTH_PASSWORD);
         String authToken = api.auth.authAndGetToken(authData);
@@ -50,7 +50,7 @@ public class DeleteBookingTests extends TestBase {
     @DisplayName("[API] Удаление бронировании неавторизованным пользователем")
     public void deleteBookingWithoutAuthorizationTest() {
         BookingBodyModel bookingBody = testData.bookingBodyModel();
-        Integer bookingId = api.booking.createBookingAndGetBookindId(bookingBody);
+        Integer bookingId = api.booking.createBookingAndGetBookingId(bookingBody);
 
         String bookingResponse = api.booking.deleteBookingWithoutAuthorization(bookingId);
 

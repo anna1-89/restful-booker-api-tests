@@ -9,30 +9,14 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class BookingSpec {
 
-    //Create booking
-
-    public static ResponseSpecification successfulBookingResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(200)
-            .expectBody(matchesJsonSchemaInClasspath(
-                    "schemas/booking/successful_booking_response_schema.json"))
-            .expectBody("bookingid", notNullValue())
-            .expectBody("booking", notNullValue())
-            .build();
-
-    public static ResponseSpecification successfulBookingWithRequiredFieldsResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(200)
-            .expectBody(matchesJsonSchemaInClasspath(
-                    "schemas/booking/required_fields_successful_booking_response_schema.json"))
-            .expectBody("bookingid", notNullValue())
-            .expectBody("booking", notNullValue())
-            .build();
-
-    public static ResponseSpecification bookingBadRequestResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(400)
-            .build();
+    public static ResponseSpecification successfulBookingResponseSpec(String schemaPath) {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectBody(matchesJsonSchemaInClasspath(schemaPath))
+                .expectBody("bookingid", notNullValue())
+                .expectBody("booking", notNullValue())
+                .build();
+    }
 
     public static ResponseSpecification successfulGetUpdateBookingResponseSpec = new ResponseSpecBuilder()
             .log(ALL)
@@ -41,29 +25,10 @@ public class BookingSpec {
                     "schemas/booking/successful_get_update_booking_response_schema.json"))
             .build();
 
-    public static ResponseSpecification bookingNotFoundResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(404)
-            .build();
-
-    public static ResponseSpecification deleteBookingNotAllowedResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(405)
-            .build();
-
-    public static ResponseSpecification bookingForbiddenResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(403)
-            .build();
-
-    public static ResponseSpecification deleteBookingResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(201)
-            .build();
-
-    public static ResponseSpecification bookingInternalServerErrorResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(500)
-            .build();
+    public static ResponseSpecification responseSpec(int expectedStatusCode) {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(expectedStatusCode)
+                .build();
+    }
 
 }
