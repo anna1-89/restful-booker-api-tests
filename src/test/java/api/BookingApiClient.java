@@ -146,6 +146,41 @@ public class BookingApiClient {
     }
 
     //DELETE
+    @Step("[API] Отправка запроса на удаление существующего бронирования DELETE /booking/{id}")
+    public void deleteBooking(String authToken, Integer bookingId) {
+        given(baseRequestSpec)
+                .cookie("token", authToken)
+                .pathParam("id", bookingId)
+                .when()
+                .delete("/booking/{id}/")
+                .then()
+                .spec(deleteBookingResponseSpec);
+    }
+
+    @Step("Отправка запроса на удаление существующего бронирования DELETE /booking/{id} неавторизованным пользователем")
+    public String deleteBookingWithoutAuthorization(Integer bookingId) {
+        return given(baseRequestSpec)
+                .pathParam("id", bookingId)
+                .when()
+                .delete("/booking/{id}/")
+                .then()
+                .spec(bookingForbiddenResponseSpec)
+                .extract()
+                .asString();
+    }
+
+    @Step("Отправка запроса на удаление несуществующего бронирования DELETE /booking/{id}")
+    public String deleteNonExistingBooking(String authToken, Integer bookingId) {
+        return given(baseRequestSpec)
+                .cookie("token", authToken)
+                .pathParam("id", bookingId)
+                .when()
+                .delete("/booking/{id}/")
+                .then()
+                .spec(deleteBookingNotAllowedResponseSpec)
+                .extract()
+                .asString();
+    }
 
 
 

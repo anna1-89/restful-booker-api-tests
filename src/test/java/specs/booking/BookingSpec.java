@@ -46,6 +46,11 @@ public class BookingSpec {
             .expectStatusCode(404)
             .build();
 
+    public static ResponseSpecification deleteBookingNotAllowedResponseSpec = new ResponseSpecBuilder()
+            .log(ALL)
+            .expectStatusCode(405)
+            .build();
+
     public static ResponseSpecification bookingForbiddenResponseSpec = new ResponseSpecBuilder()
             .log(ALL)
             .expectStatusCode(403)

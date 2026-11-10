@@ -14,6 +14,7 @@ public class TestData {
     public static final String NOT_FOUND_ERROR = "Not Found";
     public static final String FORBIDDEN_ERROR = "Forbidden";
     public static final String BAD_CREDENTIALS_ERROR = "Bad credentials";
+    public static final String METHOD_NOT_ALLOWED_ERROR = "Method Not Allowed";
 
     //AUTH
     public static final String AUTH_USERNAME = "admin";
